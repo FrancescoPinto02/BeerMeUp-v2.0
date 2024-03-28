@@ -16,7 +16,7 @@ const Beer = db.define('Beer', {
         allowNull: false,
     },
 }, {
-    //freezeTableName: true, //Pluralize tables name
+    tableName: 'Beers',
     timestamps: false
 });
 
