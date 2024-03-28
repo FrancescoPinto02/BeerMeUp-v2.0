@@ -3,6 +3,8 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
+const expressHbs = require('express-handlebars');
+const helperHbs = require('./models/handlebars-helpers');
 
 // App Express
 const app = express();
@@ -35,6 +37,17 @@ app.use((req, res, next) => {
     locals.BASE_URL = process.env.BASE_URL;
     next();
 });
+
+// Handlebars Config
+app.engine('hbs', expressHbs.engine({
+    layoutsDir: './platform/views/layouts/',
+    defaultLayout: 'main-layout',
+    extname: 'hbs',
+    helpers: helperHbs,
+    partialsDir: `${__dirname}/platform/views/partials`,
+}));
+app.set('view engine', 'hbs');
+app.set('views', './platform/views');
 
 // Ruoutes
 app.get('/', (req, res) => {
