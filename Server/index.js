@@ -53,6 +53,7 @@ app.set('views', './platform/views');
 app.get('/', (req, res) => {
     res.redirect('/welcome.html');
 });
+require('./platform/routes/beer')(app);
 
 // Run Server
 const port = process.env.PORT;
