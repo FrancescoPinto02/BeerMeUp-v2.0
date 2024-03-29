@@ -38,7 +38,7 @@ CREATE TABLE Beers(
     ibu INT NOT NULL,
     price DECIMAL(10,2) NOT NULL,
     stock INT NOT NULL DEFAULT 1,
-    img VARCHAR(255),
+    img VARCHAR(255) NOT NULL DEFAULT 'http://localhost:3000/img/beers/default.png',
     description VARCHAR(1024),
 
     PRIMARY KEY (id),
