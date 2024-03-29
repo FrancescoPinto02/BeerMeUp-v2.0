@@ -8,7 +8,7 @@ beerController.GetAll = async (req, res) => {
         const beers = await beerService.getAll();
         res.render('test', { beers: utils.convertToPlain(beers) });
     } catch (error) {
-        res.render('error', {error: error.message});
+        res.render('error', { error: error.message });
     }
 };
 

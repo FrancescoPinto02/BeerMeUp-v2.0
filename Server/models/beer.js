@@ -15,31 +15,31 @@ const Beer = db.define('Beer', {
         allowNull: false,
         references: {
             model: Brewery,
-            key: 'id'
-        }
+            key: 'id',
+        },
     },
     styleID: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
             model: Style,
-            key: 'id'
-        }
+            key: 'id',
+        },
     },
     colorID: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
             model: Color,
-            key: 'id'
-        }
+            key: 'id',
+        },
     },
     name: {
         type: DataTypes.STRING(50),
         allowNull: false,
     },
     abv: {
-        type: DataTypes.DECIMAL(4,2),
+        type: DataTypes.DECIMAL(4, 2),
         allowNull: false,
     },
     ibu: {
@@ -47,7 +47,7 @@ const Beer = db.define('Beer', {
         allowNull: false,
     },
     price: {
-        type: DataTypes.DECIMAL(10,2),
+        type: DataTypes.DECIMAL(10, 2),
         allowNull: false,
     },
     stock: {
@@ -58,15 +58,15 @@ const Beer = db.define('Beer', {
     img: {
         type: DataTypes.STRING(255),
         allowNull: false,
-        defaultValue: process.env.BASE_URL + "/img/beers/default.png"
+        defaultValue: `${process.env.BASE_URL}/img/beers/default.png`,
     },
     description: {
         type: DataTypes.STRING(1024),
-        allowNull: true
-    }
+        allowNull: true,
+    },
 }, {
     tableName: 'Beers',
-    timestamps: false
+    timestamps: false,
 });
 
 module.exports = Beer;

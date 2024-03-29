@@ -1,35 +1,35 @@
 const { DataTypes } = require('sequelize');
 const db = require('./database');
 
-const Brewery = db.define('Brewery',{
+const Brewery = db.define('Brewery', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
-        primaryKey: true
+        primaryKey: true,
     },
     name: {
         type: DataTypes.STRING(100),
-        allowNull: false
+        allowNull: false,
     },
     location: {
         type: DataTypes.STRING(255),
-        allowNull: true
+        allowNull: true,
     },
     website: {
         type: DataTypes.STRING(255),
-        allowNull: true
+        allowNull: true,
     },
     nationality: {
         type: DataTypes.STRING(50),
-        allowNull: true
+        allowNull: true,
     },
     description: {
         type: DataTypes.STRING(1024),
-        allowNull: true
-    }
-},{
+        allowNull: true,
+    },
+}, {
     tableName: 'Breweries',
-    timestamps: false
+    timestamps: false,
 });
 
 module.exports = Brewery;

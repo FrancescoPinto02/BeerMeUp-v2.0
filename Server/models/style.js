@@ -1,23 +1,23 @@
 const { DataTypes } = require('sequelize');
 const db = require('./database');
 
-const Style = db.define('Style',{
+const Style = db.define('Style', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
-        primaryKey: true
+        primaryKey: true,
     },
     name: {
         type: DataTypes.STRING(100),
-        allowNull: false
+        allowNull: false,
     },
     description: {
         type: DataTypes.STRING(1024),
-        allowNull: true
-    }
-},{
+        allowNull: true,
+    },
+}, {
     tableName: 'Styles',
-    timestamps: false
+    timestamps: false,
 });
 
 module.exports = Style;
