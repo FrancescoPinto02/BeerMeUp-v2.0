@@ -1,8 +1,10 @@
 const { DataTypes } = require('sequelize');
 const db = require('./database');
-const Brewery = require('./brewery');
+const brewery = require('./brewery');
 const Style = require('./style');
 const Color = require('./color');
+
+const DEF_IMG_PATH = `${process.env.BASE_URL}/img/beers/default.png`;
 
 const Beer = db.define('Beer', {
     id: {
@@ -14,7 +16,7 @@ const Beer = db.define('Beer', {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: Brewery,
+            model: brewery.Brewery,
             key: 'id',
         },
     },
@@ -58,7 +60,7 @@ const Beer = db.define('Beer', {
     img: {
         type: DataTypes.STRING(255),
         allowNull: false,
-        defaultValue: `${process.env.BASE_URL}/img/beers/default.png`,
+        defaultValue: DEF_IMG_PATH,
     },
     description: {
         type: DataTypes.STRING(1024),

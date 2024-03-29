@@ -1,6 +1,8 @@
 const { DataTypes } = require('sequelize');
 const db = require('./database');
 
+const brewery = {};
+
 const Brewery = db.define('Brewery', {
     id: {
         type: DataTypes.INTEGER,
@@ -32,4 +34,30 @@ const Brewery = db.define('Brewery', {
     timestamps: false,
 });
 
-module.exports = Brewery;
+brewery.getBreweryById = (id) => Brewery.findByPk(id);
+
+brewery.getAllBreweries = () => Brewery.findAll();
+
+brewery.createBrewery = (name, location, website, nationality, description) => Brewery.create({
+    name,
+    location,
+    website,
+    nationality,
+    description,
+});
+
+brewery.updateBrewery = (id, newData) => Brewery.update(newData, {
+    where: {
+        id,
+    },
+});
+
+brewery.deleteBrewery = (id) => Brewery.destroy({
+    where: {
+        id,
+    },
+});
+
+brewery.Brewery = Brewery;
+
+module.exports = brewery;
