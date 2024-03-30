@@ -1,4 +1,5 @@
 const { Sequelize } = require('sequelize');
+const utilsDB = require('./utilsDB');
 
 // Database Connection
 const sequelize = new Sequelize(
@@ -25,10 +26,12 @@ const sequelize = new Sequelize(
 // Testing Connection
 sequelize.authenticate()
     .then(() => {
-        console.log('Connection has been established successfully.');
+        console.log('Connection with DB has been established successfully.');
+        utilsDB.createAssociations();
+        console.log('Associations created successfully.');
     })
-    .catch((err) => {
-        console.error('Unable to connect to the database:', err);
+    .catch((error) => {
+        console.error(`DB Error: ${error}`);
     });
 
 module.exports = sequelize;
