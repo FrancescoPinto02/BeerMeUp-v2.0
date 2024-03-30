@@ -1,10 +1,12 @@
 const { DataTypes } = require('sequelize');
 const db = require('./database');
 const brewery = require('./brewery');
-const Style = require('./style');
-const Color = require('./color');
+const style = require('./style');
+const color = require('./color');
 
 const DEF_IMG_PATH = `${process.env.BASE_URL}/img/beers/default.png`;
+
+const beer = {};
 
 const Beer = db.define('Beer', {
     id: {
@@ -24,7 +26,7 @@ const Beer = db.define('Beer', {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: Style,
+            model: style.Style,
             key: 'id',
         },
     },
@@ -32,7 +34,7 @@ const Beer = db.define('Beer', {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: Color,
+            model: color.Color,
             key: 'id',
         },
     },
@@ -71,4 +73,6 @@ const Beer = db.define('Beer', {
     timestamps: false,
 });
 
-module.exports = Beer;
+beer.Beer = Beer;
+
+module.exports = beer;
